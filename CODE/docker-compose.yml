@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  # ── PostgreSQL + TimescaleDB ──────────────────────────────
+  # PostgreSQL + TimescaleDB 
   db:
     image: timescale/timescaledb:latest-pg16
     container_name: dalalstreet_db
@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # ── Redis ─────────────────────────────────────────────────
+  # Redis 
   redis:
     image: redis:7-alpine
     container_name: dalalstreet_redis
@@ -35,7 +35,7 @@ services:
       timeout: 3s
       retries: 5
 
-  # ── FastAPI Backend ───────────────────────────────────────
+  # FastAPI Backend 
   backend:
     build:
       context: ./backend
@@ -54,7 +54,7 @@ services:
       - ./backend:/app
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
-  # ── Celery Worker ─────────────────────────────────────────
+  # Celery Worker 
   celery_worker:
     build:
       context: ./backend
@@ -67,7 +67,7 @@ services:
       - backend
     command: celery -A app.celery_app:celery_app worker --loglevel=info
 
-  # ── Next.js Frontend ──────────────────────────────────────
+  #Next.js Frontend 
   frontend:
     build:
       context: ./frontend
