@@ -31,30 +31,23 @@ class Settings(BaseSettings):
     postgres_user: str = "dalalstreet_user"
     postgres_password: str = ""
 
-    # ── Redis ────────────────────────────────────────────────
+    #Redis
     redis_url: str = "redis://localhost:6379/0"
 
-    # ── JWT ──────────────────────────────────────────────────
-    jwt_secret_key: str = "change-me-in-production"
-    jwt_algorithm: str = "HS256"
-    jwt_access_token_expire_minutes: int = 30
-
-    # ── CORS ─────────────────────────────────────────────────
     allowed_origins: str = "http://localhost:3000"
 
     @property
     def cors_origins(self) -> list[str]:
         return [o.strip() for o in self.allowed_origins.split(",")]
 
-    # ── Rate Limiting ────────────────────────────────────────
+    #Rate Limit
     rate_limit_requests: int = 60
     rate_limit_window: int = 60
 
-    # ── Celery ───────────────────────────────────────────────
     celery_broker_url: str = "redis://localhost:6379/1"
     celery_result_backend: str = "redis://localhost:6379/2"
 
-    # ── Report Cache ─────────────────────────────────────────
+    #Report Cache
     report_cache_ttl_seconds: int = 300  # 5 minutes
 
 
