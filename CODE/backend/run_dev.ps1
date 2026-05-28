@@ -1,4 +1,3 @@
-# Run API from the correct folder so `import app` works (fixes ModuleNotFoundError: No module named 'app').
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
