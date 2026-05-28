@@ -1,7 +1,3 @@
-"""
-Async SQLAlchemy engine for PostgreSQL (optional for core API — used when you add models/migrations).
-Set DATABASE_URL in .env, e.g. postgresql+asyncpg://user:password@localhost:5432/dalalstreet
-"""
 import logging
 from typing import Any
 
@@ -17,7 +13,6 @@ _session_factory: async_sessionmaker[AsyncSession] | None = None
 
 
 def get_async_engine() -> AsyncEngine | None:
-    """Lazily create engine from DATABASE_URL. Returns None if URL missing or not PostgreSQL."""
     global _engine
     if _engine is not None:
         return _engine
@@ -33,7 +28,6 @@ def get_async_engine() -> AsyncEngine | None:
 
 
 def get_session_factory() -> async_sessionmaker[AsyncSession] | None:
-    """Async session factory for route dependencies (when you add DB queries)."""
     global _session_factory
     engine = get_async_engine()
     if engine is None:
@@ -44,7 +38,6 @@ def get_session_factory() -> async_sessionmaker[AsyncSession] | None:
 
 
 async def check_database_connection() -> dict[str, Any]:
-    """Ping PostgreSQL; used by /api/v1/health. Does not fail the app if DB is down."""
     engine = get_async_engine()
     if engine is None:
         return {
