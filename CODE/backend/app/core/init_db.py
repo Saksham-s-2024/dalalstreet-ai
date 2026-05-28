@@ -1,4 +1,3 @@
-"""Create database tables on startup when PostgreSQL is configured."""
 import logging
 
 from app.core.database import get_async_engine
