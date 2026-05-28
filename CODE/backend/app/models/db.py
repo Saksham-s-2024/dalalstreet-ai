@@ -1,4 +1,3 @@
-"""SQLAlchemy models for users and archived AI reports."""
 from __future__ import annotations
 
 import uuid
