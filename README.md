@@ -1,4 +1,4 @@
-# 🏛️ DalalStreet AI — Indian Market Intelligence Platform
+#  DalalStreet AI — Indian Market Intelligence Platform
 
 > AI-powered intraday risk assessment and long-term investment recommendations for the Indian stock market (NSE/BSE).
 
@@ -9,7 +9,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -31,8 +31,8 @@ DalalStreet AI is a **3rd-year capstone project** that provides actionable marke
 
 | Mode | User | Use Case |
 |------|------|----------|
-| **⚡ Trader Mode** | Active intraday traders | Real-time risk assessment for a specific stock at a specific timestamp |
-| **📈 Investor Mode** | Retail / layman investor | Long-term recommendations across Mutual Funds, ETFs, Large Cap & Small Cap |
+| ** Trader Mode** | Active intraday traders | Real-time risk assessment for a specific stock at a specific timestamp |
+| ** Investor Mode** | Retail / layman investor | Long-term recommendations across Mutual Funds, ETFs, Large Cap & Small Cap |
 
 The platform loads market data via **yfinance** (Yahoo Finance), processes technical indicators in real-time, and uses an **MLPRegressor + rule engine** for risk scores and BUY/SELL/HOLD/AVOID reports. Features include parallelized report generation and a centralized WebSocket broadcasting engine.
 
@@ -40,7 +40,7 @@ The platform loads market data via **yfinance** (Yahoo Finance), processes techn
 
 ## Features
 
-### ⚡ Trader Mode
+###  Trader Mode
 - **Punch-In Button** — triggers an instant AI risk assessment for the selected symbol at the current timestamp
 - **Live WebSocket price feed** — optimized multi-broadcast engine with reconnection logic
 - **TradingView Lightweight Charts** — professional candlestick charts with live tick updates
@@ -49,7 +49,7 @@ The platform loads market data via **yfinance** (Yahoo Finance), processes techn
 - **AI Risk Report** — Decision (BUY/SELL/HOLD/AVOID), Risk Score (0–100), Confidence %, entry/SL/target prices, key signals, warnings
 - **Market open/close detection** — warns user when NSE is closed
 
-### 📈 Investor Mode
+###  Investor Mode
 - **Asset type selector** — Large Cap, Small Cap, ETFs, Mutual Funds
 - **Risk appetite** — LOW / MODERATE / HIGH
 - **Systematic ETF Alpha Signals** — Median-based buy-the-dip detection for ETFs
@@ -195,7 +195,7 @@ Copy `.env.example` to `.env` and fill in your keys. **Never commit `.env` to gi
 | `POSTGRES_PASSWORD` | Database password | Yes |
 | `REDIS_URL` | Redis connection string | Yes |
 
-> 💡 **Mock mode**: If yfinance returns no data (network/symbol error), quotes and OHLC fall back to simulated mock prices.
+>  **Mock mode**: If yfinance returns no data (network/symbol error), quotes and OHLC fall back to simulated mock prices.
 
 ---
 
@@ -307,8 +307,6 @@ Based on the PRD phases:
 
 ## Disclaimer
 
-> ⚠️ **DalalStreet AI is a student project for educational purposes only.** It is NOT registered with SEBI as an investment advisor. All AI-generated reports are for informational purposes and do not constitute financial advice. Past performance is not indicative of future results. Please consult a SEBI-registered financial advisor before making investment decisions. The developers are not responsible for any financial losses incurred through the use of this platform.
+>  **DalalStreet AI is a student project for educational purposes only.** It is NOT registered with SEBI as an investment advisor. All AI-generated reports are for informational purposes and do not constitute financial advice. Past performance is not indicative of future results. Please consult a SEBI-registered financial advisor before making investment decisions. The developers are not responsible for any financial losses incurred through the use of this platform.
 
----
 
-*Built with ❤️ as a 3rd year Computer Science project | DalalStreet AI v2.0*
