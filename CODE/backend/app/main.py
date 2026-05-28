@@ -22,7 +22,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ── App ───────────────────────────────────────────────────────
 app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
@@ -30,12 +29,10 @@ app = FastAPI(
     redoc_url=None,
 )
 
-# ── Rate Limiting ─────────────────────────────────────────────
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(SlowAPIMiddleware)
 
-# ── CORS ──────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
@@ -44,12 +41,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Routes ────────────────────────────────────────────────────
 app.include_router(router)
 app.include_router(auth.router)
 
 
-# ── WebSocket — Live Price Feed ───────────────────────────────
 class ConnectionManager:
     def __init__(self):
         self.active: dict[str, list[WebSocket]] = {}
@@ -100,7 +95,6 @@ manager = ConnectionManager()
 
 @app.websocket("/ws/market/{symbol}")
 async def websocket_market(websocket: WebSocket, symbol: str):
-    # Sanitize symbol from URL
     import re
     symbol = symbol.strip().upper()[:20]
     if not re.match(r"^[A-Z0-9\-&\.]{1,20}$", symbol):
@@ -110,7 +104,6 @@ async def websocket_market(websocket: WebSocket, symbol: str):
     await manager.connect(symbol, websocket)
     try:
         while True:
-            # Keep connection alive; messages are sent via manager.broadcast
             await websocket.receive_text()
     except WebSocketDisconnect:
         manager.disconnect(symbol, websocket)
@@ -118,7 +111,6 @@ async def websocket_market(websocket: WebSocket, symbol: str):
         manager.disconnect(symbol, websocket)
 
 
-# ── Global Exception Handler ──────────────────────────────────
 @app.exception_handler(Exception)
 async def global_handler(request: Request, exc: Exception):
     logger.exception("Unhandled error: %s", exc)
@@ -127,7 +119,7 @@ async def global_handler(request: Request, exc: Exception):
 
 @app.on_event("startup")
 async def startup():
-    logger.info("🚀 DalalStreet AI v%s starting (%s)", settings.app_version, settings.app_env)
+    logger.info("DalalStreet AI v%s starting (%s)", settings.app_version, settings.app_env)
     await init_db()
     db = await check_database_connection()
     if db.get("ok"):
