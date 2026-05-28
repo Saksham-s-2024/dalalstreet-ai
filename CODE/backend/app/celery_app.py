@@ -1,4 +1,3 @@
-"""Celery app for docker-compose / background workers (no tasks registered yet)."""
 from celery import Celery
 
 from app.core.config import settings
