@@ -65,7 +65,7 @@ The platform loads market data via **yfinance** (Yahoo Finance), processes techn
 - **Flat Premium UI** — gradient-free minimalist design with a "Live" status indicator and auto-reconnect logic
 - **SEBI disclaimer** — financial advisory disclaimer on all pages
 
----
+-----
 
 ## Tech Stack
 
