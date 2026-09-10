@@ -81,7 +81,7 @@ The platform loads market data via **yfinance** (Yahoo Finance), processes techn
 | **Rate Limiting** | SlowAPI (per-IP, per-route) |
 | **Containerisation** | Docker + Docker Compose |
 
----
+-----
 
 ## Project Structure
 
