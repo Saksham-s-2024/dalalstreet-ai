@@ -134,7 +134,7 @@ dalalstreet-ai/
 - Redis (or use Docker)
 - PostgreSQL with TimescaleDB extension (or use Docker)
 
----
+------
 
 ### Option A — Docker Compose (Recommended)
 
